@@ -13,8 +13,13 @@ return new class extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->longText('description');
+            $table->string('userId')->nullable();
+            $table->string('assigneduserId')->nullable();
+            $table->string('titel');
+            $table->string('description');
+            $table->integer('points');
+            $table->integer('places');
+            $table->binary('image')->nullable();
             $table->timestamps();
         });
     }
