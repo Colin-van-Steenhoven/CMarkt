@@ -140,3 +140,6 @@
     display: flex;
     align-items: center;
   }
+  .footer-fix{
+    min-height: calc(100vh - 55px - 309px);
+  }
