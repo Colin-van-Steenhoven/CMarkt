@@ -85,5 +85,12 @@ class PageController extends Controller
 
         return redirect()->route('my-tasks');
     }
+
+    public function deletetask($id){
+        $tasks = Task::findOrFail($id);
+        $tasks->delete();
+
+        return redirect()->route('home');
+    }
     
 }
