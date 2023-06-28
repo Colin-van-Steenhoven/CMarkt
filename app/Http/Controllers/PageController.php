@@ -18,6 +18,12 @@ class PageController extends Controller
  
         return view('home', ['tasks' => $tasks]);
      }
+    public function mytasks(){
+         $userId = Auth::id();
+         $tasks = Task::where('userId', $userId)->get();
+     
+         return view('my-tasks', ['tasks' => $tasks]);
+     }
 
     public function addtask() {
         return view('create');
