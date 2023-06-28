@@ -20,7 +20,7 @@ Auth::routes();
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/login', function(){
-	return redirect('/amoclient/redirect');
+	return redirect('/');
 })->name('login');
 
 Route::get('/amoclient/ready', function(){
