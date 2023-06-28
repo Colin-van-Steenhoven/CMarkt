@@ -21,6 +21,7 @@ Auth::routes();
 
 Route::get('/', [PageController::class, 'index'])->name('home');
 
+Route::get('/my-tasks',[PageController::class, 'mytasks'])->name('my-tasks');
 Route::get('/create',[PageController::class, 'create'])->name('create-task');
 Route::post('/create', [PageController::class, 'save'])->name('save-task');
 
