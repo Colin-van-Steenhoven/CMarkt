@@ -3,10 +3,16 @@
 @section('content')
 
 <div class="headTextEventList">
-    
-</div>
-<div class="row card-margin">
     <h1>C punten opdrachten </h1>
+</div>
+@if (session()->has('message'))
+
+    <div class="alert alert-info" role="alert">
+        {{ session()->get('message') }}
+    </div>
+@endif
+<p class="user-points">Your Points: {{ Auth::user()->cpoints }}</p>
+<div class="row card-margin">
     @foreach ($tasks as $task)
         <div class="card bg mb-3 mx-auto" style="width: 17rem;">
             @if ($task->image != "")
