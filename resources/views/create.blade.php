@@ -1,5 +1,4 @@
-@extends('layouts.app')
-
+@extends('layouts.base')
 @section('content')
 <img src="img/NL-sticker.jpg" alt="">
 <form method="POST" action="{{ route('save-Car-form') }} " enctype="multipart/form-data">
