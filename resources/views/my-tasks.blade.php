@@ -17,7 +17,8 @@
             <div class="card-body">
             <h5 class="card-title text-center">{{ $task->titel }}</h5>
             <p class="card-text text-center">{{ $task->description }}</p>
-            <a href="#" class="btn btn-dark btn-border btn-send col-md-12 text-center">Meer info</a>
+            <a href="#" class="btn btn-dark mb-3 btn-border btn-send col-md-12 text-center">Meer info</a>
+            <a href="{{ route('eddit-tasks',$task->id) }}" class="btn btn-dark btn-border btn-send col-md-12 text-center">Bewerk taak</a>
             </div>
         </div>
     @endforeach

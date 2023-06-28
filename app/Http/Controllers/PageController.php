@@ -51,4 +51,23 @@ class PageController extends Controller
     
         return redirect()->route('home');
     }
+
+    public function eddit($id) {
+        $tasks = Task::findOrFail($id);
+
+        return view('eddit-tasks', ['tasks' => $tasks]);
+    }
+
+    public function edditsave($id, Request $request)
+    {
+        $tasks = Task::where("id", $id)->first();
+        $tasks->titel = $request->input('titel');
+        $tasks->points = $request->input('points');
+        $tasks->places = $request->input('places');
+        $tasks->description = $request->input('description');
+        $tasks->save();
+
+        return redirect()->route('my-tasks');
+    }
+    
 }

@@ -24,6 +24,9 @@ Route::get('/', [PageController::class, 'index'])->name('home');
 Route::get('/my-tasks',[PageController::class, 'mytasks'])->name('my-tasks');
 Route::get('/create',[PageController::class, 'create'])->name('create-task');
 Route::post('/create', [PageController::class, 'save'])->name('save-task');
+Route::get('/eddit-tasks/{id}', [PageController::class, 'eddit'])->name('eddit-tasks');
+Route::post('/eddit-tasks/{id}', [PageController::class, 'edditsave'])->name('eddit-tasks');
+
 
 Route::get('/login', function(){
 	return redirect('/amoclient/redirect');
