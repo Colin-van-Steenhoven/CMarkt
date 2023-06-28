@@ -13,6 +13,12 @@ class PageController extends Controller
         return view('create');
     }
 
+    public function index() {
+        $tasks = Task::all();
+ 
+        return view('home', ['tasks' => $tasks,]);
+     }
+
     public function addtask() {
         return view('create');
     }
