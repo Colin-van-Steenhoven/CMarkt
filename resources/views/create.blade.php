@@ -3,10 +3,9 @@
 <img src="img/NL-sticker.jpg" alt="">
 <form method="POST" action="{{ route('create-task') }} " enctype="multipart/form-data">
   @csrf
-    <div class="container contact">
+    <div class="contact mt-2 p-4">
         <div class="row">
-            <div class="col-md-9">
-              <h2>Voeg hier een taak toe</h2>
+              <h2 class="text-center">Voeg hier een taak toe</h2>
                 <div class="col-md-6">
                   <div class="form-group">
                       <label for="titel">Titel</label>
@@ -36,15 +35,9 @@
                         <label for="image"></label>
                         <input type="file" name="image" >
                     </div>
-                  </div>
-                    <div class="form-group">        
-                      <div class="col-sm-offset-2 col-sm-10">
+                  </div>      
                         <input type="submit" class="btn btn-lg btn-primary mt-3" value="Aanbod afronden">
-                      </div>
-                    </div>
-                </div>
             </div>
         </div>
-    </div>
 </form>
 @endsection

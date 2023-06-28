@@ -1,12 +1,7 @@
 @extends('layouts.base')
 
 @section('content')
-
-<div class="headTextEventList">
-    
-</div>
 <div class="row card-margin">
-    <h1>C punten opdrachten </h1>
     @foreach ($tasks as $task)
         <div class="card bg mb-3 mx-auto" style="width: 17rem;">
             @if ($task->image != "")
