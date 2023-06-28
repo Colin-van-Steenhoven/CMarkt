@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [PageController::class, 'index'])->name('home');
 
 Route::get('/create',[PageController::class, 'create'])->name('create-task');
 Route::post('/create', [PageController::class, 'save'])->name('save-task');

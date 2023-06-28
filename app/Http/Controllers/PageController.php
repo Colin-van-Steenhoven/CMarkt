@@ -14,9 +14,9 @@ class PageController extends Controller
     }
 
     public function index() {
-        $tasks = Task::all();
+        $tasks = Task::All();
  
-        return view('home', ['tasks' => $tasks,]);
+        return view('home', ['tasks' => $tasks]);
      }
 
     public function addtask() {
