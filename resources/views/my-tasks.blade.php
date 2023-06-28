@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="headTextEventList">
-    <h1>C punten opdrachten </h1>
+    <h1>Mijn gemaakte taken</h1>
 </div>
 <div class="row card-margin">
     @foreach ($tasks as $task)
