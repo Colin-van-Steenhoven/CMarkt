@@ -1,7 +1,7 @@
 @extends('layouts.base')
 @section('content')
 <img src="img/NL-sticker.jpg" alt="">
-<form method="POST"   enctype="multipart/form-data">
+<form method="POST" action="{{route('eddit-tasks', $tasks->id)}}"   enctype="multipart/form-data">
   @csrf
   <div class="mt-2 p-4">
     <div class="row">
