@@ -15,7 +15,6 @@ class PageController extends Controller
 
     public function index() {
         $tasks = Task::All();
- 
         return view('home', ['tasks' => $tasks]);
      }
     public function mytasks(){
@@ -31,6 +30,21 @@ class PageController extends Controller
 
     public function save(Request $request)
     {
+        $request->validate([
+            'titel' => 'required',
+            'description' => 'required',
+            'points' => 'required',
+            'places' => 'required',
+            'image' => 'mimes:jpg,png,jpeg|max:5048'
+        ], [
+            'titel.required' => 'Please enter a title.',
+            'description.required' => 'Please enter a description.',
+            'points.required' => 'Please enter the number of points.',
+            'places.required' => 'Please enter the number of places.',
+            'image.mimes' => 'Only JPG, PNG, and JPEG files are allowed.',
+            'image.max' => 'The image size must not exceed 5048 kilobytes (5MB).'
+        ]);
+
         $userId = Auth::id();
         $newTask = new Task();
         $newTask->userId = $userId;
@@ -48,7 +62,9 @@ class PageController extends Controller
             $newTask['image'] = $filename;
             $newTask->save();
             }
+        
     
-        return redirect()->route('home');
+        return redirect()->route('home')
+            ->with('message', 'Je taak is geupload!');
     }
 }
