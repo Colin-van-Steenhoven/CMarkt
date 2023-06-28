@@ -22,7 +22,7 @@
             @include('components.header')
         </header>
         <div class="container">
-            <main class="py-4">
+            <main class="py-4 footer-fix">
                 @yield('content')
             </main>
             <footer>

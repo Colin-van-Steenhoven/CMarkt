@@ -44,7 +44,7 @@
                         <label for="image"></label>
                         <input type="file" name="image" >
                     </div>
-                  </div>      
+                  </div class="mb-20">      
                         <input type="submit" class="btn btn-lg btn-primary mt-3" value="Aanbod afronden">
             </div>
         </div>
