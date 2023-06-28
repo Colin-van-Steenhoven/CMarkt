@@ -6,3 +6,137 @@
 
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
+.footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    padding: 20px 0px 20px 0px;
+    color: #004c35;
+  }
+  
+  .footer > * {
+    flex:  1 100%;
+  }
+  
+  .footer__addr {
+    margin-right: 1.25em;
+    margin-bottom: 2em;
+  }
+  
+  .footer__logo {
+    max-width: 200px;
+  }
+  
+  .footer__addr h2 {
+    margin-top: 1.3em;
+    font-size: 15px;
+    font-weight: 400;
+  }
+  
+  .nav__title {
+    font-weight: bolder;
+    font-size: 15px;
+  }
+  
+  .footer address {
+    font-style: normal;
+    color: #004c35;
+  }
+  
+  .footer__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 36px;
+    max-width: max-content;
+    background-color: rgb(33, 33, 33, 0.07);
+    border-radius: 100px;
+    color: #004c35;
+    line-height: 0;
+    margin: 0.6em 0;
+    font-size: 1rem;
+    padding: 0 1.3em;
+  }
+  
+  .footer ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  .footer li {
+    line-height: 2em;
+    list-style: none;
+  }
+  
+  .footer a {
+    text-decoration: none;
+  }
+  
+  .footer__nav {
+    display: grid;
+  }
+  
+  .nav__ul a {
+    color: #004c35;
+  }
+  
+  .nav__ul--extra {
+    column-count: 2;
+    column-gap: 1.25em;
+  }
+  
+  .legal {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    color: #004c35;
+  }
+    
+  .legal__links {
+    display: flex;
+    align-items: center;
+  }
+  
+  
+  @media screen and (min-width: 24.375em) {
+    .legal .legal__links {
+      margin-left: auto;
+    }
+  }
+  
+  @media screen and (min-width: 40.375em) {
+    .footer__nav > * {
+      flex: 1;
+    }
+    
+    .nav__item--extra {
+      flex-grow: 2;
+    }
+    
+    .footer__addr {
+      flex: 1 0px;
+    }
+    
+    .footer__nav {
+      flex: 2 0px;
+    }
+  }
+  .nav__item1{
+    grid-column-start: 2;
+    display: flex;
+    align-items: center;
+  }
+  .nav__item2{
+    grid-column-start: 3;
+    display: flex;
+    align-items: center;
+  }
+  .nav__item3{
+    grid-column-start: 4;
+    display: flex;
+    align-items: center;
+  }
+  .nav__item4{
+    grid-column-start: 5;
+    display: flex;
+    align-items: center;
+  }

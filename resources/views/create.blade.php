@@ -5,13 +5,8 @@
   @csrf
     <div class="container contact">
         <div class="row">
-          
-            <div class="col-md-3">
-                <div class="contact-info">
-                    <h2>Voeg hier een taak toe</h2>
-                </div>
-            </div>
             <div class="col-md-9">
+              <h2>Voeg hier een taak toe</h2>
                 <div class="col-md-6">
                   <div class="form-group">
                       <label for="titel">Titel</label>

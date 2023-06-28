@@ -21,12 +21,14 @@
         <header>
             @include('components.header')
         </header>
-        <main class="py-4">
-            @yield('content')
-        </main>
-        <footer>
-            @include('components.footer')
-        </footer>
+        <div class="container">
+            <main class="py-4">
+                @yield('content')
+            </main>
+            <footer>
+                @include('components.footer')
+            </footer>
+        </div>
     </div>
 </body>
 </html>
