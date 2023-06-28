@@ -18,9 +18,11 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 Route::get('/login', function(){
 	return redirect('/amoclient/redirect');
 })->name('login');
+
 Route::get('/amoclient/ready', function(){
-	return redirect('/educations');
-})
+	return redirect('/');
+});
