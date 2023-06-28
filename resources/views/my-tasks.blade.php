@@ -5,6 +5,12 @@
 <div class="headTextEventList">
     <h1>Mijn gemaakte taken</h1>
 </div>
+@if (session()->has('message'))
+
+    <div class="alert alert-info" role="alert">
+        {{ session()->get('message') }}
+    </div>
+@endif
 <div class="row card-margin">
     @foreach ($tasks as $task)
         <div class="card bg mb-3 mx-auto" style="width: 17rem;">

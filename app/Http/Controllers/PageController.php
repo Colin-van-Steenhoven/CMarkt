@@ -83,7 +83,8 @@ class PageController extends Controller
         $tasks->description = $request->input('description');
         $tasks->save();
 
-        return redirect()->route('my-tasks');
+        return redirect()->route('my-tasks')
+            ->with('message', 'Je taak is geupdate!');
     }
     
 }
