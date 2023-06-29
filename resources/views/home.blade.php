@@ -11,7 +11,14 @@
         {{ session()->get('message') }}
     </div>
 @endif
-<p class="user-points">Your Points: {{ Auth::user()->cpoints }}</p>
+{{-- <p class="user-points">Your Points: 
+    @if (Auth::user()->cpoints =! null)
+    {{ Auth::user()->cpoints }}
+    
+    @elseif (Auth::user()->cpoints == null)
+    Nog geen C punten verdiend
+    @endif
+</p> --}}
 <div class="row card-margin">
     @foreach ($tasks as $task)
         <div class="card bg mb-3 mx-auto" style="width: 17rem;">
