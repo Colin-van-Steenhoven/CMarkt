@@ -100,14 +100,11 @@ class PageController extends Controller
             'description' => 'required',
             'points' => 'required',
             'places' => 'required',
-            'image' => 'mimes:jpg,png,jpeg|max:5048'
         ], [
             'titel.required' => 'Please enter a title.',
             'description.required' => 'Please enter a description.',
             'points.required' => 'Please enter the number of points.',
             'places.required' => 'Please enter the number of places.',
-            'image.mimes' => 'Only JPG, PNG, and JPEG files are allowed.',
-            'image.max' => 'The image size must not exceed 5048 kilobytes (5MB).'
         ]);
         $tasks = Task::where("id", $id)->first();
         $tasks->titel = $request->input('titel');
