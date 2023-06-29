@@ -181,3 +181,9 @@
   box-shadow: 0 0 5px #9ecaed;
   border-color: #9ecaed;
 }
+.row > *{
+  padding: 0px;
+}
+.col-md-6{
+  padding-right: 12px;
+}
