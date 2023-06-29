@@ -162,3 +162,22 @@
   height: 200px; /* Pas dit aan naar de gewenste hoogte */
   object-fit: cover;
 }
+.custom-dropdown {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  color: #333;
+}
+
+.custom-dropdown option {
+  background-color: #fff;
+}
+
+.custom-dropdown:focus {
+  outline: none;
+  box-shadow: 0 0 5px #9ecaed;
+  border-color: #9ecaed;
+}

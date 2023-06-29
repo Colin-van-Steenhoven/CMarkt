@@ -10,6 +10,7 @@
         </ul>
     </div>
 @endif
+
 <form method="POST" action="{{ route('create-task') }} " enctype="multipart/form-data">
   @csrf
     <div class="contact mt-2 p-4">
@@ -40,15 +41,17 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                  <div class="form-group">
-                      <label for="tag_ids">Tags </label>
-                      <select name="tag_ids[]" id="tag_ids" multiple class="select2">
-                          @foreach($tags as $tag)
-                              <option value="{{ $tag->id }}">{{ $tag->name }}</option>
-                          @endforeach
-                      </select>
-                      <p>houd CTRL ingedrukt om meerdere te kiezen</p>
-                  </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="tag_ids">Tags</label>
+                            <select name="tag_ids[]" id="tag_ids" multiple class="select2 custom-dropdown">
+                                @foreach($tags as $tag)
+                                    <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                                @endforeach
+                            </select>
+                            <p>Houd CTRL ingedrukt om meerdere tags te selecteren</p>
+                        </div>
+                    </div>
               </div>
                   <div class="col-md-6">
                     <div class="form-group">
