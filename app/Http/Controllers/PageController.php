@@ -17,10 +17,25 @@ class PageController extends Controller
 
     public function index() {
         $tasks = Task::All();
-        return view('home', ['tasks' => $tasks]);
+
+        //tasks met tag coding
+        $codingTasks = Task::whereHas('tags', function ($query) {
+            $query->where('name', 'coding');
+        })->get();
+        //tasks met tag help
+        $helpTasks = Task::whereHas('tags', function ($query) {
+            $query->where('name', 'help');
+        })->get();
+        //tasks met tag bijles
+        $bijlesTasks = Task::whereHas('tags', function ($query) {
+            $query->where('name', 'bijles');
+        })->get();
+
+        return view('home', ['tasks' => $tasks], ['codingTasks' => $codingTasks], ['helpTasks' => $helpTasks], ['bijlesTasks' => $bijlesTasks]);
      }
     public function mytasks(){
          $userId = Auth::id();
+
          $tasks = Task::where('userId', $userId)->get();
      
          return view('my-tasks', ['tasks' => $tasks]);
