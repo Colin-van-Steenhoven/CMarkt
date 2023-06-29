@@ -145,5 +145,17 @@ class PageController extends Controller
         return back()->withInput()
             ->with('message', 'Je staat ingeschreven!');
     }
+    public function remove_from_task($id)
+{
+    $task = Task::findOrFail($id);
+    $user = auth()->user();
+
+    if ($task->users->contains($user)) {
+        $task->users()->detach($user->id);
+        $task->increment('places', 1);
+    }
+
+    return back()->with('message', 'Je bent afgemeld!');
+}
     
 }
