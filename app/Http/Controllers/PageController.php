@@ -133,9 +133,14 @@ class PageController extends Controller
     }
 
     public function assign_to_task($id){
+
         $task = Task::findOrFail($id);
-        $user = auth()->user();
-        $task->users()->attach($user->id);
+        if (!$task->users->contains(Auth::user())) {
+            $user = auth()->user();
+            $task->users()->attach($user->id);
+            $task->decrement('places', 1);
+        } 
+
 
         return back()->withInput()
             ->with('message', 'Je staat ingeschreven!');

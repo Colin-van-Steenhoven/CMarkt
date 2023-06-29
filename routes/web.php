@@ -31,6 +31,7 @@ Route::get('/delete-task{id}', [PageController::class, 'deletetask'])->name('del
 Route::get('/details{id}',[PageController::class, 'details'])->name('details');
 
 Route::get('/assign_to_task/{id}',[PageController::class, 'assign_to_task'])->name('assign_to_task');
+Route::get('/remove_from_task/{id}',[PageController::class, 'remove_from_task'])->name('remove_from_task');
 
 Route::get('/login', function(){
 	return redirect('/amoclient/redirect');
