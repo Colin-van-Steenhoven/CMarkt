@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Task;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
     public function create() {
-        return view('create');
+        $tags = Tag::All();
+        return view('create',['tags' => $tags]);
     }
 
     public function index() {
@@ -46,6 +48,7 @@ class PageController extends Controller
         ]);
 
         $userId = Auth::id();
+
         $newTask = new Task();
         $newTask->userId = $userId;
         $newTask->titel = $request->titel;
@@ -54,16 +57,17 @@ class PageController extends Controller
         $newTask->places = $request->places;
         $newTask->image = $request->image;
         
-    
         if($request->file('image')){
             $file= $request->file('image');
             $filename= date('YmdHi').$file->getClientOriginalName();
             $file-> move(public_path('public/Image'), $filename);
             $newTask['image'] = $filename;
             $newTask->save();
-            }
+        }
         
-    
+        $tagIds = $request->input('tag_ids'); 
+        $newTask->tags()->sync($tagIds);
+
         return redirect()->route('home')
             ->with('message', 'Je taak is geupload!');
     }
@@ -76,6 +80,20 @@ class PageController extends Controller
 
     public function edditsave($id, Request $request)
     {
+        $request->validate([
+            'titel' => 'required',
+            'description' => 'required',
+            'points' => 'required',
+            'places' => 'required',
+            'image' => 'mimes:jpg,png,jpeg|max:5048'
+        ], [
+            'titel.required' => 'Please enter a title.',
+            'description.required' => 'Please enter a description.',
+            'points.required' => 'Please enter the number of points.',
+            'places.required' => 'Please enter the number of places.',
+            'image.mimes' => 'Only JPG, PNG, and JPEG files are allowed.',
+            'image.max' => 'The image size must not exceed 5048 kilobytes (5MB).'
+        ]);
         $tasks = Task::where("id", $id)->first();
         $tasks->titel = $request->input('titel');
         $tasks->points = $request->input('points');

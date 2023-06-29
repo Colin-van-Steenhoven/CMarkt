@@ -39,6 +39,17 @@
                         <textarea id="description" type="description" name="description" class="form-control"></textarea>
                     </div>
                 </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                      <label for="tag_ids">Tags </label>
+                      <select name="tag_ids[]" id="tag_ids" multiple class="select2">
+                          @foreach($tags as $tag)
+                              <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                          @endforeach
+                      </select>
+                      <p>houd CTRL ingedrukt om meerdere te kiezen</p>
+                  </div>
+              </div>
                   <div class="col-md-6">
                     <div class="form-group">
                         <label for="image"></label>
