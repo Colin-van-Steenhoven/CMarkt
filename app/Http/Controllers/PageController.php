@@ -25,6 +25,12 @@ class PageController extends Controller
      
          return view('my-tasks', ['tasks' => $tasks]);
      }
+     public function details($id) {
+        $tasks = Task::findOrFail($id);
+
+        return view('details', ['tasks' => $tasks]);
+    }
+
 
     public function addtask() {
         return view('create');
