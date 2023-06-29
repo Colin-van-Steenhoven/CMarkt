@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Task;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class PageController extends Controller
 {
