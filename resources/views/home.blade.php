@@ -12,27 +12,6 @@
     </div>
 @endif
 
-<style>
-    .carousel-control-prev,
-    .carousel-control-next {
-      width: 2%;
-      top: auto;
-      bottom: 50%;
-      transform: translateY(50%);
-      font-size: 1.5rem;
-    }
-
-    .carousel-control-next-icon,
-    .carousel-control-prev-icon {
-      height: 30px;
-      width: 30px;
-    }
-    .card-img-top {
-    width: 100%;
-    height: 200px; /* Pas dit aan naar de gewenste hoogte */
-    object-fit: cover;
-  }
-  </style>
 <div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-ride="carousel" data-bs-interval="8000">
     <div class="carousel-inner">
       @foreach ($tasks->chunk(4) as $index => $chunk)
