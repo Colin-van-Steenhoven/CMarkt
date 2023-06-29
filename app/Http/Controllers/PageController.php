@@ -17,10 +17,25 @@ class PageController extends Controller
 
     public function index() {
         $tasks = Task::All();
-        return view('home', ['tasks' => $tasks]);
+
+        //tasks met tag coding
+        $codingTasks = Task::whereHas('tags', function ($query) {
+            $query->where('name', 'coding');
+        })->get();
+        //tasks met tag help
+        $helpTasks = Task::whereHas('tags', function ($query) {
+            $query->where('name', 'help');
+        })->get();
+        //tasks met tag bijles
+        $bijlesTasks = Task::whereHas('tags', function ($query) {
+            $query->where('name', 'bijles');
+        })->get();
+
+        return view('home', ['tasks' => $tasks], ['codingTasks' => $codingTasks], ['helpTasks' => $helpTasks], ['bijlesTasks' => $bijlesTasks]);
      }
     public function mytasks(){
          $userId = Auth::id();
+
          $tasks = Task::where('userId', $userId)->get();
      
          return view('my-tasks', ['tasks' => $tasks]);
@@ -91,14 +106,11 @@ class PageController extends Controller
             'description' => 'required',
             'points' => 'required',
             'places' => 'required',
-            'image' => 'mimes:jpg,png,jpeg|max:5048'
         ], [
             'titel.required' => 'Please enter a title.',
             'description.required' => 'Please enter a description.',
             'points.required' => 'Please enter the number of points.',
             'places.required' => 'Please enter the number of places.',
-            'image.mimes' => 'Only JPG, PNG, and JPEG files are allowed.',
-            'image.max' => 'The image size must not exceed 5048 kilobytes (5MB).'
         ]);
         $tasks = Task::where("id", $id)->first();
         $tasks->titel = $request->input('titel');
