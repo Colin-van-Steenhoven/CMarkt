@@ -27,6 +27,11 @@
       height: 30px;
       width: 30px;
     }
+    .card-img-top {
+    width: 100%;
+    height: 200px; /* Pas dit aan naar de gewenste hoogte */
+    object-fit: cover;
+  }
   </style>
 <div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-ride="carousel" data-bs-interval="8000">
     <div class="carousel-inner">
