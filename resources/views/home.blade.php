@@ -27,7 +27,7 @@
                 <div class="card-body">
                   <h5 class="card-title">{{ $task->titel }}</h5>
                   <p class="card-text">{{ $task->description }}</p>
-                  <a href="#" class="btn btn-dark mb-3 btn-border btn-send col-md-12 text-center">Meer info</a>
+                  <a href="{{ route('details',$task->id) }}" class="btn btn-dark btn-border btn-send col-md-12 text-center">Meer info</a>
                 </div>
               </div>
             @endforeach

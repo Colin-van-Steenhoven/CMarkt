@@ -27,6 +27,7 @@ Route::post('/create', [PageController::class, 'save'])->name('save-task');
 Route::get('/eddit-tasks/{id}', [PageController::class, 'eddit'])->name('eddit-tasks');
 Route::post('/eddit-tasks/{id}', [PageController::class, 'edditsave'])->name('eddit-tasks');
 Route::get('/delete-task{id}', [PageController::class, 'deletetask'])->name('delete-task');
+Route::get('/details{id}',[PageController::class, 'details'])->name('details');
 
 
 Route::get('/login', function(){
