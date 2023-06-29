@@ -1,6 +1,15 @@
 @extends('layouts.base')
 @section('content')
 <img src="img/NL-sticker.jpg" alt="">
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 <form method="POST" action="{{route('eddit-tasks', $tasks->id)}}"   enctype="multipart/form-data">
   @csrf
   <div class="mt-2 p-4">
