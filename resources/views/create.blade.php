@@ -1,6 +1,5 @@
 @extends('layouts.base')
 @section('content')
-<img src="img/NL-sticker.jpg" alt="">
 @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -13,7 +12,7 @@
 
 <form method="POST" action="{{ route('create-task') }} " enctype="multipart/form-data">
   @csrf
-    <div class="contact mt-2 p-4">
+    <div class="contact mt-2">
         <div class="row">
               <h2 class="text-center">Voeg hier een taak toe</h2>
                 <div class="col-md-6">

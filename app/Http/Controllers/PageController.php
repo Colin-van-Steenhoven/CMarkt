@@ -8,6 +8,7 @@ use App\Models\Task;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use Symfony\Component\Console\Input\Input;
+use Illuminate\Support\Str;
 
 class PageController extends Controller
 {

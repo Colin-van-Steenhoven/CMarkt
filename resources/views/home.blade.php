@@ -12,6 +12,15 @@
     </div>
 @endif
 
+<style>.card-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  </style>
+
 <div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-ride="carousel" data-bs-interval="8000">
     <div class="carousel-inner">
       @foreach ($tasks->chunk(4) as $index => $chunk)
@@ -24,9 +33,10 @@
                 @else
                   <img src="https://via.placeholder.com/150" class="card-img-top" alt="Placeholder image">
                 @endif
-                <div class="card-body">
-                  <h5 class="card-title">{{ $task->titel }}</h5>
-                  <p class="card-text">{{ $task->description }}</p>
+                <div class="card-body" style="height: 200px">
+                  <h3 class="card-title">{{ $task->titel }}</h3>
+                  <p class="card-text">{{ Illuminate\Support\Str::of($task->description)->limit(150) }}</p>
+
                   <a href="{{ route('details',$task->id) }}" class="btn btn-dark btn-border btn-send col-md-12 text-center">Meer info</a>
                 </div>
               </div>

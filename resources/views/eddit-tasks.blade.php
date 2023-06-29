@@ -39,6 +39,7 @@
                         <textarea id="description" type="description" name="description" class="form-control">{{ $tasks->description }}</textarea>
                     </div>
                 </div>
+                
                          
                         <input type="submit" class="btn btn-lg btn-primary mt-3"  value="Aanbod afronden">
                 </div>
