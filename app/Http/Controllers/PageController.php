@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Task;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Symfony\Component\Console\Input\Input;
 
 class PageController extends Controller
 {
@@ -128,6 +129,15 @@ class PageController extends Controller
         $tasks->delete();
 
         return redirect()->route('home');
+    }
+
+    public function assign_to_task($id){
+        $task = Task::findOrFail($id);
+        $user = auth()->user();
+        $task->users()->attach($user->id);
+
+        return back()->withInput()
+            ->with('message', 'Je staat ingeschreven!');
     }
     
 }

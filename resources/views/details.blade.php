@@ -1,6 +1,12 @@
 @extends('layouts.base')
 
 @section('content')
+@if (session()->has('message'))
+
+<div class="alert alert-info" role="alert">
+    {{ session()->get('message') }}
+</div>
+@endif
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
@@ -20,6 +26,10 @@
 <p>
     Aantal C-punten: {{ $tasks->points }}
 </p>
+@if ($tasks->users->contains(Auth::user())) 
+    <p class=" bg-success">Je staat al ingeschreven</p>
+@else
+    <a href="{{ route('assign_to_task', $tasks->id) }}" class="btn btn-primary">Aanmelden voor deze activiteit</a>
+@endif
 
-<button class="btn btn-primary">Aanmelden voor deze activiteit</button>
 @endsection

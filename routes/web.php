@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
+use PhpParser\Node\Expr\Assign;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,7 @@ Route::post('/eddit-tasks/{id}', [PageController::class, 'edditsave'])->name('ed
 Route::get('/delete-task{id}', [PageController::class, 'deletetask'])->name('delete-task');
 Route::get('/details{id}',[PageController::class, 'details'])->name('details');
 
+Route::get('/assign_to_task/{id}',[PageController::class, 'assign_to_task'])->name('assign_to_task');
 
 Route::get('/login', function(){
 	return redirect('/amoclient/redirect');
