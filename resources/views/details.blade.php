@@ -27,7 +27,7 @@
     Aantal C-punten: {{ $tasks->points }}
 </p>
 @if ($tasks->users->contains(Auth::user())) 
-    <p class=" bg-success">Je staat al ingeschreven</p>
+    <p class=" bg-success d-inline-block">Je staat al ingeschreven</p>
 @else
     <a href="{{ route('assign_to_task', $tasks->id) }}" class="btn btn-primary">Aanmelden voor deze activiteit</a>
 @endif
