@@ -33,7 +33,7 @@
                 @else
                   <img src="https://via.placeholder.com/150" class="card-img-top" alt="Placeholder image">
                 @endif
-                <div class="card-body">
+                <div class="card-body" style="height: 200px">
                   <h3 class="card-title">{{ $task->titel }}</h3>
                   <p class="card-text">{{ Illuminate\Support\Str::of($task->description)->limit(150) }}</p>
 
