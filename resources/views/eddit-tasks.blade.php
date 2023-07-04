@@ -1,6 +1,5 @@
 @extends('layouts.base')
 @section('content')
-<img src="img/NL-sticker.jpg" alt="">
 @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
