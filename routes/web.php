@@ -29,6 +29,8 @@ Route::get('/eddit-tasks/{id}', [PageController::class, 'eddit'])->name('eddit-t
 Route::post('/eddit-tasks/{id}', [PageController::class, 'edditsave'])->name('eddit-tasks');
 Route::get('/delete-task{id}', [PageController::class, 'deletetask'])->name('delete-task');
 Route::get('/details{id}',[PageController::class, 'details'])->name('details');
+Route::get('/task-users{id}',[PageController::class, 'taskusers'])->name('task-users');
+Route::post('/add-points/{id}', [PageController::class, 'addpoints'])->name('add-points');
 
 Route::get('/assign_to_task/{id}',[PageController::class, 'assign_to_task'])->name('assign_to_task');
 Route::get('/remove_from_task/{id}',[PageController::class, 'remove_from_task'])->name('remove_from_task');

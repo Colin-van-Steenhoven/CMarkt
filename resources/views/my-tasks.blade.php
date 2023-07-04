@@ -29,9 +29,9 @@
                   <h3 class="card-title">{{ $task->titel }}</h3>
                   
 
-                  <a href="{{ route('details',$task->id) }}" class="btn btn-dark mb-3 btn-border btn-send col-md-12 text-center">Meer info</a>
                   <a href="{{ route('eddit-tasks',$task->id) }}" class="btn btn-dark  mb-3 btn-border btn-send col-md-12 text-center">Bewerk taak</a>
-                  <a href="{{ route('delete-task',$task->id) }}" class="btn btn-dark btn-border btn-send col-md-12 text-center">Delete taak</a>
+                  <a href="{{ route('delete-task',$task->id) }}" class="btn btn-dark  mb-3 btn-border btn-send col-md-12 text-center">Delete taak</a>
+                  <a href="{{ route('task-users',$task->id) }}" class="btn btn-dark btn-border btn-send col-md-12 text-center">Deelnemers</a>
                 </div>
               </div>
             @endforeach

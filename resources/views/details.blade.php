@@ -26,6 +26,13 @@
 <p>
     Aantal C-punten: {{ $tasks->points }}
 </p>
+<h2>Assigned Users</h2>
+<ul>
+    @foreach ($assignedUsers as $user)
+        <li>{{ $user->name }}</li>
+        
+    @endforeach
+</ul>
 @if ($tasks->users->contains(Auth::user())) 
     <p class=" bg-success d-inline-block rounded text-light">Je staat al ingeschreven</p>
     <a href="{{ route('remove_from_task', $tasks->id) }}" class="btn btn-primary">Uitschijven voor deze activiteit</a>
