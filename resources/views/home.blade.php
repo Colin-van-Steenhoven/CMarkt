@@ -46,6 +46,10 @@
             font-size: 14px;
             margin-top: 1rem;
         }
+
+        .card-wrapper .card {
+            margin-bottom: 20px;
+        }
     }
 
 </style>
@@ -55,22 +59,11 @@
   function isMobileDevice() {
       return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
   }
-
-  document.addEventListener("DOMContentLoaded", function () {
-      var carouselElement = document.querySelector("#carouselExampleControls");
-
-      // Alleen automatisch scrollen op desktop
-      if (!isMobileDevice()) {
-          var carousel = new bootstrap.Carousel(carouselElement);
-      } else {
-          carouselElement.removeAttribute("data-bs-ride");
-      }
-  });
 </script>
 
 
 <div class="card-wrapper container-sm">
-    <div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-ride="carousel" data-bs-interval="8000">
+    <div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-ride="carousel" >
         <div class="carousel-inner">
             @foreach ($tasks->chunk(4) as $index => $chunk)
                 <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
