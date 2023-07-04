@@ -40,15 +40,18 @@
         Aantal te behalen C-punten: {{ $tasks->points }}
     </p>
 </div>
-<h2>Assigned Users</h2>
-<ul>
-    @foreach ($assignedUsers as $user)
-        <li>{{ $user->name }}</li>
-    @endforeach
-</ul>
-@if ($tasks->users->contains(Auth::user())) 
-    <a href="{{ route('remove_from_task', $tasks->id) }}" class="btn btn-primary">Uitschijven voor deze activiteit</a>
-@else
-    <a href="{{ route('assign_to_task', $tasks->id) }}" class="btn btn-primary">Inschrijven voor deze activiteit</a>
-@endif
+<div class="border p-4">
+    <h2>Assigned Users</h2>
+    <ul>
+        @foreach ($assignedUsers as $user)
+            <li>{{ $user->name }}</li>
+        @endforeach
+    </ul>
+
+    @if ($tasks->users->contains(Auth::user())) 
+        <a href="{{ route('remove_from_task', $tasks->id) }}" class="btn btn-primary">Uitschijven voor deze activiteit</a>
+    @else
+        <a href="{{ route('assign_to_task', $tasks->id) }}" class="btn btn-primary">Inschrijven voor deze activiteit</a>
+    @endif
+</div>
 @endsection
