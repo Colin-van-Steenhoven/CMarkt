@@ -188,3 +188,31 @@
   padding-right: 12px;
   width: 60%;
 }
+
+@media screen and (max-width: 767px) {
+  .footer {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .footer__addr {
+    margin-right: 0;
+    margin-bottom: 1em;
+  }
+  
+  .nav__item1,
+  .nav__item2,
+  .nav__item3,
+  .nav__item4 {
+    grid-column-start: auto;
+    display: block;
+    text-align: center;
+  }
+  
+  .nav__ul--extra {
+    column-count: 1;
+    column-gap: 0;
+  }
+}
+
+
