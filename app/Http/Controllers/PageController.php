@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Task;
+use App\Models\User;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use Symfony\Component\Console\Input\Input;
@@ -39,13 +40,21 @@ class PageController extends Controller
          $userId = Auth::id();
 
          $tasks = Task::where('userId', $userId)->get();
+
      
          return view('my-tasks', ['tasks' => $tasks]);
      }
      public function details($id) {
         $tasks = Task::findOrFail($id);
+        $assignedUsers = $tasks->users;
 
-        return view('details', ['tasks' => $tasks]);
+        return view('details', ['tasks' => $tasks, 'assignedUsers' => $assignedUsers]);
+    }
+    public function taskusers($id) {
+        $tasks = Task::findOrFail($id);
+        $assignedUsers = $tasks->users;
+
+        return view('task-users', ['tasks' => $tasks, 'assignedUsers' => $assignedUsers]);
     }
 
 
@@ -156,6 +165,23 @@ class PageController extends Controller
     }
 
     return back()->with('message', 'Je bent afgemeld!');
+}
+public function addpoints($id, Request $request)
+{
+    $userId = $request->input('user_id');
+    $points = $request->input('points');
+
+
+    $user = User::findOrFail($userId);
+    $user->cpoints += $points;
+    $user->save();
+
+    
+    $task = Task::findOrFail($id);
+    $task->users()->detach($userId);
+
+    return back()->with('message','Punten toegevoegd');
+
 }
     
 }
