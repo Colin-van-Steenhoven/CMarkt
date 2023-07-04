@@ -7,6 +7,9 @@
     {{ session()->get('message') }}
 </div>
 @endif
+@if ($tasks->users->contains(Auth::user()))
+    <p class=" bg-success rounded text-light">Je staat al ingeschreven</p>
+@endif
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
@@ -20,14 +23,14 @@
     </div>
 </div>
 
-<p>
+<h4>
     {{ $tasks->description }}
-</p>
+</h4>
 <p>
-    Aantal C-punten: {{ $tasks->points }}
+    Aantal te behalen C-punten: {{ $tasks->points }}
 </p>
 @if ($tasks->users->contains(Auth::user())) 
-    <p class=" bg-success d-inline-block rounded text-light">Je staat al ingeschreven</p>
+    
     <a href="{{ route('remove_from_task', $tasks->id) }}" class="btn btn-primary">Uitschijven voor deze activiteit</a>
 @else
     <a href="{{ route('assign_to_task', $tasks->id) }}" class="btn btn-primary">Inschrijven voor deze activiteit</a>
