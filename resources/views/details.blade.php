@@ -7,21 +7,23 @@
         </div>
     @endif
 
-    @if ($tasks->users->contains(Auth::user()))
-        <p class="bg-success rounded text-light">Je staat al ingeschreven</p>
-    @endif
-
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12">
-                <div class="position-relative bg-dark text-white">
-                    <div class=""> <!-- Added border and padding -->
-                        <img id="detailImage" src="{{ url('public/Image/'.$tasks->image) }}" class="img-fluid w-100 d-flex align-items-center" alt="Background Image" style="max-height: 300px; object-fit: cover;">
-                        <h2 class="position-absolute bg-dark mt-1 top-50 start-50 translate-middle text-center fw-bold">
-                            {{ $tasks->titel }}
-                        </h2>
-                    </div>
-                </div>
+<div class="alert alert-info" role="alert">
+    {{ session()->get('message') }}
+</div>
+@elseif($tasks->users->contains(Auth::user()))
+<div class="alert alert-info bg-success" role="alert">
+    <p class="text-light">Je staat al ingeschreven</p>
+</div>
+    
+@endif
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="position-relative bg-dark text-white">
+                <img id="detailImage" src="{{ url('public/Image/'.$tasks->image) }}" class="img-fluid w-100 d-flex align-items-center" alt="Background Image" style="max-height: 300px; object-fit: cover;">
+                <h2 class="position-absolute bg-dark mt-1 top-50 start-50 translate-middle text-center fw-bold">
+                    {{ $tasks->titel }}
+                </h2>
             </div>
         </div>
     </div>
