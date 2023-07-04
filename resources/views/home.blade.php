@@ -3,25 +3,33 @@
 @section('content')
 
 <div class="headTextEventList">
-    <h1>C punten opdrachten </h1>
+    <h1>C punten opdrachten</h1>
 </div>
 @if (session()->has('message'))
-
     <div class="alert alert-info" role="alert">
         {{ session()->get('message') }}
     </div>
 @endif
 
-<style>.card-text {
+<style>
+  .card-text {
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
   }
-  </style>
-
-
+  
+  @media (max-width: 576px) {
+    .card {
+      display: none;
+    }
+    
+    .card:first-child {
+      display: block;
+    }
+  }
+</style>
 
 <div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-ride="carousel" data-bs-interval="8000">
   <div class="carousel-inner">
