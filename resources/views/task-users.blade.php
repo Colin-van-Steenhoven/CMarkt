@@ -18,7 +18,9 @@
         </div>
     </div>
 </div>
-
+<p>
+    Aantal te behalen C-punten: {{ $tasks->points }}
+</p>
 
 
 <h2>Assigned Users</h2>
