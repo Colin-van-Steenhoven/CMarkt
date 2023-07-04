@@ -5,8 +5,6 @@
         <div class="alert alert-info" role="alert">
             {{ session()->get('message') }}
         </div>
-
-
 @elseif($tasks->users->contains(Auth::user()))
 <div class="alert alert-info bg-success" role="alert">
     <p class="text-light">Je staat al ingeschreven</p>
