@@ -222,3 +222,42 @@
 .poop{
   max-width: 700px;
 }
+.card-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 768px) {
+  .card-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+  }
+
+  .carousel-control-prev,
+  .carousel-control-next {
+      display: none;
+  }
+
+  .carousel-indicators {
+      display: none;
+  }
+
+  .carousel-inner {
+      width: fit-content;
+      margin: 0 auto;
+  }
+
+  .swipe-text {
+      text-align: center;
+      font-size: 14px;
+      margin-top: 1rem;
+  }
+
+  .card-wrapper .card {
+      margin-bottom: 20px;
+  }
+}
