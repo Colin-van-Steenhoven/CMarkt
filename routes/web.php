@@ -14,9 +14,7 @@ Route::get('/amoclient/ready', function(){
 	return redirect('/');
 });
 
-Route::get('/filtered', [PageController::class, 'filtered'])->name('filtered')->middleware('teacher', 'auth');
-Route::redirect('/filtered', '/');
-
+Route::get('/filtered', [PageController::class, 'filtered'])->name('filtered');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/assign_to_task/{id}', [PageController::class, 'assign_to_task'])
