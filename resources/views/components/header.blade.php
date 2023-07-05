@@ -37,7 +37,7 @@
 
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item">
-                                <p class="user-points">Je punten: {{ Auth::user()->cpoints }}</p> 
+                                <p class="user-points">Je punten: {{ $totalPoints }}</p> 
                                 </a>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();

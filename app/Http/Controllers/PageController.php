@@ -18,24 +18,17 @@ class PageController extends Controller
         $tags = Tag::All();
         return view('create',['tags' => $tags]);
     }
+        public function showHeader()
+    {
+        $totalPoints = Task_User::where('user_id', auth()->id())->sum('points');
+        return view('header', ['totalPoints' => $totalPoints]);
+    }
 
     public function index() {
         $tasks = Task::All();
 
-        //tasks met tag coding
-        $codingTasks = Task::whereHas('tags', function ($query) {
-            $query->where('name', 'coding');
-        })->get();
-        //tasks met tag help
-        $helpTasks = Task::whereHas('tags', function ($query) {
-            $query->where('name', 'help');
-        })->get();
-        //tasks met tag bijles
-        $bijlesTasks = Task::whereHas('tags', function ($query) {
-            $query->where('name', 'bijles');
-        })->get();
 
-        return view('home', ['tasks' => $tasks], ['codingTasks' => $codingTasks], ['helpTasks' => $helpTasks], ['bijlesTasks' => $bijlesTasks]);
+        return view('home', ['tasks' => $tasks]);
      }
     public function mytasks(){
          $userId = Auth::id();
