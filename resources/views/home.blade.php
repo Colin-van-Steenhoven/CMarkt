@@ -49,6 +49,7 @@
 
         .card-wrapper .card {
             margin-bottom: 20px;
+            
         }
         
     }
@@ -61,21 +62,22 @@
       return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
   }
 </script>
-
 <form action="{{ route('filtered') }}" method="GET">
     @csrf
     <div class="form-group">
         <label for="tags">Filter op tags:</label>
-        <select name="tags[]" id="tags" class="form-control custom-select" multiple>
+        <div class="btn-group-toggle" data-toggle="buttons">
             @foreach ($tags as $tag)
-                <option value="{{ $tag->name }}" {{ in_array($tag->name, request('tags', [])) ? 'selected' : '' }}>
+                <label class="btn btn-outline-primary {{ in_array($tag->name, request('tags', [])) ? 'active' : '' }}">
+                    <input type="checkbox" name="tags[]" value="{{ $tag->name }}" autocomplete="off" {{ in_array($tag->name, request('tags', [])) ? 'checked' : '' }}>
                     {{ $tag->name }}
-                </option>
+                </label>
             @endforeach
-        </select>
+        </div>
     </div>
     <button type="submit" class="btn btn-primary">Filter</button>
 </form>
+
 
 
 <div class="card-wrapper container-sm">
@@ -94,7 +96,9 @@
                                 <div class="card-body" style="height: 200px">
                                     <h3 class="card-title">{{ $task->titel }}</h3>
                                     <p class="card-text">{{ Illuminate\Support\Str::of($task->description)->limit(150) }}</p>
+                                    <p class="card-tag" style="border: 1px solid #ccc; border-radius: 5px; padding: 5px;">{{ $tag->name }}</p>
                                 </div>
+                                
                                 <div class="card-footer">
                                     <a href="{{ route('details',$task->id) }}" class="btn btn-dark btn-border btn-send col-md-12 text-center">Meer info</a>
                                 </div>
@@ -114,6 +118,8 @@
         </button>
     </div>
 </div>
+
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 
