@@ -34,7 +34,7 @@
             <input type="number" name="points" min="0">
             <button type="submit">Assign</button>
         </form>
-        <li>{{ $$user->pivot->points }}</li>
+        <li>punten gekregen: {{ $user->points }}</li><br>
         
     @endforeach
 </ul>

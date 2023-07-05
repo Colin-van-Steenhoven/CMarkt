@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Task;
 use App\Models\User;
 use App\Models\Tag;
+use App\Models\Task_User;
 use Illuminate\Http\Request;
 use Symfony\Component\Console\Input\Input;
 use Illuminate\Support\Str;
@@ -53,6 +54,14 @@ class PageController extends Controller
     public function taskusers($id) {
         $tasks = Task::findOrFail($id);
         $assignedUsers = $tasks->users;
+
+        foreach ($assignedUsers as $user) {
+            $taskUser = Task_User::where('user_id', $user->id)
+            ->where('task_id', $id)
+            ->first();
+            $user->points = $taskUser ? $taskUser->points : null;
+        }
+        
 
         return view('task-users', ['tasks' => $tasks, 'assignedUsers' => $assignedUsers]);
     }
