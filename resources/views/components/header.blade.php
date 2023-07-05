@@ -34,7 +34,9 @@
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
                             </a>
-
+                            @php
+                                $totalPoints = \App\Models\Task_User::where('user_id', auth()->id())->sum('points');
+                            @endphp
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item">
                                 <p class="user-points">Je punten: {{ $totalPoints }}</p> 

@@ -18,11 +18,8 @@ class PageController extends Controller
         $tags = Tag::All();
         return view('create',['tags' => $tags]);
     }
-        public function showHeader()
-    {
-        $totalPoints = Task_User::where('user_id', auth()->id())->sum('points');
-        return view('header', ['totalPoints' => $totalPoints]);
-    }
+
+
 
     public function index() {
         $tasks = Task::All();
