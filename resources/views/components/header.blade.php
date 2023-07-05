@@ -9,6 +9,7 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
+                @if (Auth::check() && Auth::user()->type === 'teacher')
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('create-task')}}">Maak een nieuwe taak</a>
@@ -17,6 +18,7 @@
                         <a class="nav-link" href="{{ route('my-tasks')}}">Mijn taken</a>
                     </li>
                 </ul>
+                @endif
 
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ms-auto">
