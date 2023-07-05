@@ -171,14 +171,9 @@ public function addpoints($id, Request $request)
     $userId = $request->input('user_id');
     $points = $request->input('points');
 
-
-    $user = User::findOrFail($userId);
-    $user->cpoints += $points;
-    $user->save();
-
     
     $task = Task::findOrFail($id);
-    $task->users()->detach($userId);
+    $task->users()->updateExistingPivot($userId, ['points' => $points]);
 
     return back()->with('message','Punten toegevoegd');
 

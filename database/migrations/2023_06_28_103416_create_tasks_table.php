@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
-            $table->string('userId')->nullable();
-            $table->string('assigneduserId')->nullable();
+            $table->string('userId');
             $table->string('titel');
             $table->longText('description');
             $table->integer('points');

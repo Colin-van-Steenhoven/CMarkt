@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('task_user', function (Blueprint $table) {
             $table->unsignedBigInteger('task_id');
             $table->string('user_id');
-            $table->timestamps();
 
             $table->foreign('task_id')->references('id')->on('tasks')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->integer('points')->nullable();
         });
     }
 
