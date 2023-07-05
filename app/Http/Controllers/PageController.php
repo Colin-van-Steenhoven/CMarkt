@@ -22,10 +22,14 @@ class PageController extends Controller
 
 
     public function index() {
-        $tasks = Task::All();
+        $tasks = Task::all();
         $tags = Tag::All();
-
-        return view('home', ['tasks' => $tasks],['tags' => $tags]);
+        $tasktags = [];
+        foreach ($tasks as $task) {
+            $tasktags[$task->id] = $task->tags()->get();
+        }
+    
+        return view('home', compact('tasks', 'tasktags'),['tags' => $tags]);
      }
     public function mytasks(){
          $userId = Auth::id();
@@ -190,8 +194,11 @@ class PageController extends Controller
 
         // Alle beschikbare tags ophalen
         $tags = Tag::all();
-
-        return view('home', compact('tasks', 'tags'));
+        $tasktags = [];
+        foreach ($tasks as $task) {
+            $tasktags[$task->id] = $task->tags()->get();
+        }
+        return view('home', compact('tasks', 'tags','tasktags'));
     }
 
     

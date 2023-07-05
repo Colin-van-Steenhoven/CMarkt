@@ -96,8 +96,11 @@
                                 <div class="card-body" style="height: 200px">
                                     <h3 class="card-title">{{ $task->titel }}</h3>
                                     <p class="card-text">{{ Illuminate\Support\Str::of($task->description)->limit(150) }}</p>
-                                    @foreach ($tags as $tag)
-                                    <p class="card-tag" style="border: 1px solid #ccc; border-radius: 5px; padding: 5px;">{{ $tag->name }}</p>
+                                    @foreach($tasktags[$task->id] as $key => $tag)
+                                        {{ $tag->name }}
+                                        @if($key !== count($tasktags[$task->id]) - 1)
+                                            ,
+                                        @endif
                                     @endforeach
                                 </div>
                                 
