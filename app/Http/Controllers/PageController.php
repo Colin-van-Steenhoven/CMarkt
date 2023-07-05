@@ -23,9 +23,9 @@ class PageController extends Controller
 
     public function index() {
         $tasks = Task::All();
+        $tags = Tag::All();
 
-
-        return view('home', ['tasks' => $tasks]);
+        return view('home', ['tasks' => $tasks],['tags' => $tags]);
      }
     public function mytasks(){
          $userId = Auth::id();
@@ -154,28 +154,45 @@ class PageController extends Controller
             ->with('message', 'Je staat ingeschreven!');
     }
     public function remove_from_task($id)
-{
-    $task = Task::findOrFail($id);
-    $user = auth()->user();
+    {
+        $task = Task::findOrFail($id);
+        $user = auth()->user();
 
-    if ($task->users->contains($user)) {
-        $task->users()->detach($user->id);
-        $task->increment('places', 1);
+        if ($task->users->contains($user)) {
+            $task->users()->detach($user->id);
+            $task->increment('places', 1);
+        }
+
+        return back()->with('message', 'Je bent afgemeld!');
+    }
+    public function addpoints($id, Request $request)
+    {
+        $userId = $request->input('user_id');
+        $points = $request->input('points');
+
+        
+        $task = Task::findOrFail($id);
+        $task->users()->updateExistingPivot($userId, ['points' => $points]);
+
+        return back()->with('message','Punten toegevoegd');
+
+    }
+    public function filtered(Request $request)
+    {
+        $selectedTags = $request->input('tags');
+
+        // Query om taken op te halen op basis van geselecteerde tags
+        $tasks = Task::when($selectedTags, function ($query) use ($selectedTags) {
+            $query->whereHas('tags', function ($subQuery) use ($selectedTags) {
+                $subQuery->whereIn('name', $selectedTags);
+            });
+        })->get();
+
+        // Alle beschikbare tags ophalen
+        $tags = Tag::all();
+
+        return view('home', compact('tasks', 'tags'));
     }
 
-    return back()->with('message', 'Je bent afgemeld!');
-}
-public function addpoints($id, Request $request)
-{
-    $userId = $request->input('user_id');
-    $points = $request->input('points');
-
-    
-    $task = Task::findOrFail($id);
-    $task->users()->updateExistingPivot($userId, ['points' => $points]);
-
-    return back()->with('message','Punten toegevoegd');
-
-}
     
 }

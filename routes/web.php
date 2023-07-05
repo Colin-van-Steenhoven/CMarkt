@@ -42,3 +42,5 @@ Route::get('/login', function(){
 Route::get('/amoclient/ready', function(){
 	return redirect('/');
 });
+
+Route::get('/filtered', [PageController::class, 'filtered'])->name('filtered');

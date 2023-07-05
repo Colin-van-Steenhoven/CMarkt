@@ -50,6 +50,7 @@
         .card-wrapper .card {
             margin-bottom: 20px;
         }
+        
     }
 
 </style>
@@ -60,6 +61,21 @@
       return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
   }
 </script>
+
+<form action="{{ route('filtered') }}" method="GET">
+    @csrf
+    <div class="form-group">
+        <label for="tags">Filter op tags:</label>
+        <select name="tags[]" id="tags" class="form-control custom-select" multiple>
+            @foreach ($tags as $tag)
+                <option value="{{ $tag->name }}" {{ in_array($tag->name, request('tags', [])) ? 'selected' : '' }}>
+                    {{ $tag->name }}
+                </option>
+            @endforeach
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Filter</button>
+</form>
 
 
 <div class="card-wrapper container-sm">
