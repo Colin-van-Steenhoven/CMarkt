@@ -11,14 +11,12 @@ Route::get('/login', function(){
 })->name('login');
 
 Route::get('/amoclient/ready', function(){
-<<<<<<< Updated upstream
 	return redirect('/');
 });
 
-Route::get('/filtered', [PageController::class, 'filtered'])->name('filtered');
-=======
-    return redirect('/');
-});
+Route::get('/filtered', [PageController::class, 'filtered'])->name('filtered')->middleware('teacher', 'auth');
+Route::redirect('/filtered', '/');
+
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/assign_to_task/{id}', [PageController::class, 'assign_to_task'])
@@ -60,4 +58,4 @@ Route::get('/', [PageController::class, 'index'])
 Route::get('/details{id}', [PageController::class, 'details'])
     ->name('details');
 ?>
->>>>>>> Stashed changes
+
