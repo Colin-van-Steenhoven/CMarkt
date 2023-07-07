@@ -34,6 +34,12 @@
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
+                        <label for="enddate">End Date</label>
+                        <input id="enddate" type="date" name="enddate" value="{{ $tasks->enddate }}" class="form-control">
+                    </div>
+                </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
                         <label for="description">Beschrijving</label>
                         <textarea id="description" type="description" name="description" class="form-control">{{ $tasks->description }}</textarea>
                     </div>

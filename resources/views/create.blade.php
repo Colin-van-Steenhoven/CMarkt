@@ -35,6 +35,13 @@
                         <input id="places" type="number" name="places"  class="form-control">
                     </div>
                   </div>
+                  <div class="col-md-6 h-15">
+                        <div class="form-group">
+                            <label for="enddate">End Date</label>
+                            <input id="enddate" type="date" name="enddate" class="form-control">
+                        </div>
+                    </div>
+
                   <div class="col-md-6">
                     <div class="form-group">
                         <label for="description">Beschrijving</label>

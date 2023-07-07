@@ -16,13 +16,7 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <script>
-        $(document).ready(function() {
-            $('.select2-tags').select2({
-                tags: true,
-                tokenSeparators: [',', ' '], 
-                closeOnSelect: false, 
-            });
-        });
+
     </script>
 
     <!-- Scripts -->

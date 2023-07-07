@@ -12,66 +12,13 @@
 @endif
 
 <style>
-    .card-text {
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
 
-    @media (max-width: 768px) {
-        .card-wrapper {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
 
-        .carousel-control-prev,
-        .carousel-control-next {
-            display: none;
-        }
 
-        .carousel-indicators {
-            display: none;
-        }
-
-        .carousel-inner {
-            width: fit-content;
-            margin: 0 auto;
-        }
-
-        .swipe-text {
-            text-align: center;
-            font-size: 14px;
-            margin-top: 1rem;
-        }
-
-        .card-wrapper .card {
-            margin-bottom: 20px;
-            
-        }
-        
-    }
-
-    .tag {
-    background-color: #e8e8e8;
-    border-radius: 4px;
-    padding: 2px 6px;
-    margin-right: 5px;
-    font-weight: bold;
-    color: #333;
-}
 
 
 </style>
 
-<script>
-  // Controleren of het apparaat een mobiel apparaat is
-  function isMobileDevice() {
-      return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
-  }
-</script>
 <form action="{{ route('filtered') }}" method="GET">
     @csrf
     <div class="form-group">
@@ -139,14 +86,5 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 
-<script>
-    if (isMobileDevice()) {
-        var cardWrapper = document.querySelector('.card-wrapper');
-        var swipeText = document.createElement('div');
-        swipeText.classList.add('swipe-text');
-        swipeText.innerText = 'Swipe om meer kaarten te zien';
-        cardWrapper.appendChild(swipeText);
-    }
-</script>
 
 @endsection

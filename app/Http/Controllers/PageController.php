@@ -22,7 +22,7 @@ class PageController extends Controller
 
 
     public function index() {
-        $tasks = Task::all();
+        $tasks = Task::whereDate('enddate', '>=', now())->get();
         $tags = Tag::All();
         $tasktags = [];
         foreach ($tasks as $task) {
@@ -72,13 +72,16 @@ class PageController extends Controller
             'description' => 'required',
             'points' => 'required',
             'places' => 'required',
-            'image' => 'mimes:jpg,png,jpeg|max:5048'
+            'image' => 'mimes:jpg,png,jpeg|max:5048',
+            'enddate' => 'required|date'
         ], [
             'titel.required' => 'Please enter a title.',
             'description.required' => 'Please enter a description.',
             'points.required' => 'Please enter the number of points.',
             'places.required' => 'Please enter the number of places.',
             'image.mimes' => 'Only JPG, PNG, and JPEG files are allowed.',
+            'enddate.required' => 'Please enter an end date.',
+            'enddate.date' => 'Please enter a valid end date.',
             'image.max' => 'The image size must not exceed 5048 kilobytes (5MB).'
         ]);
 
@@ -91,6 +94,7 @@ class PageController extends Controller
         $newTask->points = $request->points;
         $newTask->places = $request->places;
         $newTask->image = $request->image;
+        $newTask->enddate = $request->enddate;
         
         if($request->file('image')){
             $file= $request->file('image');
@@ -120,17 +124,20 @@ class PageController extends Controller
             'description' => 'required',
             'points' => 'required',
             'places' => 'required',
+            'enddate' => 'required|date'
         ], [
             'titel.required' => 'Please enter a title.',
             'description.required' => 'Please enter a description.',
             'points.required' => 'Please enter the number of points.',
             'places.required' => 'Please enter the number of places.',
+            'enddate.date' => 'Please enter a valid end date.',
         ]);
         $tasks = Task::where("id", $id)->first();
         $tasks->titel = $request->input('titel');
         $tasks->points = $request->input('points');
         $tasks->places = $request->input('places');
         $tasks->description = $request->input('description');
+        $tasks->enddate = $request->input('enddate');
         $tasks->save();
 
         return redirect()->route('my-tasks')
@@ -185,14 +192,14 @@ class PageController extends Controller
     {
         $selectedTags = $request->input('tags');
 
-        // Query om taken op te halen op basis van geselecteerde tags
-        $tasks = Task::when($selectedTags, function ($query) use ($selectedTags) {
-            $query->whereHas('tags', function ($subQuery) use ($selectedTags) {
-                $subQuery->whereIn('name', $selectedTags);
-            });
-        })->get();
 
-        // Alle beschikbare tags ophalen
+        $tasks = Task::when($selectedTags, function ($query) use ($selectedTags) {
+            foreach ($selectedTags as $tag) {
+                $query->whereHas('tags', function ($subQuery) use ($tag) {
+                    $subQuery->where('name', $tag);
+                });
+            }
+        })->get();
         $tags = Tag::all();
         $tasktags = [];
         foreach ($tasks as $task) {

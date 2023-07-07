@@ -18,6 +18,7 @@ return new class extends Migration
             $table->longText('description');
             $table->integer('points');
             $table->integer('places');
+            $table->dateTime('enddate')->nullable();
             $table->binary('image')->nullable();
             $table->timestamps();
         });
