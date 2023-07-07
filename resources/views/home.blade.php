@@ -54,6 +54,16 @@
         
     }
 
+    .tag {
+    background-color: #e8e8e8;
+    border-radius: 4px;
+    padding: 2px 6px;
+    margin-right: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+
 </style>
 
 <script>
@@ -96,13 +106,16 @@
                                 <div class="card-body" style="height: 200px">
                                     <h3 class="card-title">{{ $task->titel }}</h3>
                                     <p class="card-text">{{ Illuminate\Support\Str::of($task->description)->limit(150) }}</p>
-                                    @foreach($tasktags[$task->id] as $key => $tag)
-                                        {{ $tag->name }}
-                                        @if($key !== count($tasktags[$task->id]) - 1)
-                                            ,
-                                        @endif
-                                    @endforeach
+                                    <div class="tags">
+                                        @foreach($tasktags[$task->id] as $key => $tag)
+                                            <span class="tag">{{ $tag->name }}</span>
+                                            @if($key !== count($tasktags[$task->id]) - 1)
+                                                ,
+                                            @endif
+                                        @endforeach
+                                    </div>
                                 </div>
+                                
                                 
                                 <div class="card-footer">
                                     <a href="{{ route('details',$task->id) }}" class="btn btn-dark btn-border btn-send col-md-12 text-center">Meer info</a>
