@@ -78,20 +78,18 @@
         <label for="tags">Filter op tags:</label>
         <div class="btn-group-toggle" data-toggle="buttons">
             @foreach ($tags as $tag)
-                <label class="btn btn-outline-primary {{ in_array($tag->name, request('tags', [])) ? 'active' : '' }}">
+                <label class="btn btn-outline-primary {{ in_array($tag->name, request('tags', [])) ? 'active' : '' }}" style="margin-right: 10px;">
                     <input type="checkbox" name="tags[]" value="{{ $tag->name }}" autocomplete="off" {{ in_array($tag->name, request('tags', [])) ? 'checked' : '' }}>
                     {{ $tag->name }}
                 </label>
             @endforeach
+            <button type="submit" class="btn btn-primary">Filter</button>
         </div>
     </div>
-    <button type="submit" class="btn btn-primary">Filter</button>
 </form>
 
-
-
 <div class="card-wrapper container-sm">
-    <div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-ride="carousel" >
+    <div id="carouselExampleControls" class="carousel carousel-dark slide">
         <div class="carousel-inner">
             @foreach ($tasks->chunk(4) as $index => $chunk)
                 <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
@@ -116,7 +114,6 @@
                                     </div>
                                 </div>
                                 
-                                
                                 <div class="card-footer">
                                     <a href="{{ route('details',$task->id) }}" class="btn btn-dark btn-border btn-send col-md-12 text-center">Meer info</a>
                                 </div>
@@ -136,6 +133,7 @@
         </button>
     </div>
 </div>
+
 
 
 
