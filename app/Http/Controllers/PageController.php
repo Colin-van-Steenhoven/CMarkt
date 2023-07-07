@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Task;
 use App\Models\User;
 use App\Models\Tag;
+use Carbon\Carbon;
 use App\Models\Task_User;
 use Illuminate\Http\Request;
 use Symfony\Component\Console\Input\Input;
@@ -191,7 +192,7 @@ class PageController extends Controller
     public function filtered(Request $request)
     {
         $selectedTags = $request->input('tags');
-
+        $endDate = $request->input('enddate');
 
         $tasks = Task::when($selectedTags, function ($query) use ($selectedTags) {
             foreach ($selectedTags as $tag) {
@@ -199,7 +200,14 @@ class PageController extends Controller
                     $subQuery->where('name', $tag);
                 });
             }
-        })->get();
+        })
+        ->when($endDate, function ($query) use ($endDate) {
+            $query->whereDate('enddate', '>=', $endDate);
+        })
+        ->whereDate('enddate', '>=', Carbon::now())
+        ->get();
+        
+
         $tags = Tag::all();
         $tasktags = [];
         foreach ($tasks as $task) {
